@@ -88,23 +88,47 @@
       <div class="rh-hero__content">
         <span class="rh-hero__eyebrow">Fluid Power Specialists — North West &amp; Merseyside</span>
         <h1 class="rh-hero__title">The Complete <span>On Site</span> Solutions</h1>
-        <p class="rh-hero__body">Rapid Hydraulics Ltd brings 25+ years' experience to hydraulic and pneumatic service work across the North West of England and Merseyside — mobile hose replacement, pump and valve overhaul, filtration and engineering services delivered with maximum attention to detail and minimal disruption to your operation.</p>
-        <div class="rh-hero__actions">
-          <a href="contact.html" class="btn btn--dark">Request a Callout</a>
-          <a href="services.html" class="btn btn--ghost">Our Services</a>
-        </div>
-        <div class="rh-hero__stats">
-          <div class="rh-hero__stat">
-            <div class="rh-hero__stat-num">25+</div>
-            <div class="rh-hero__stat-label">Years Experience</div>
+        <p class="rh-hero__body">25+ years keeping hydraulic and pneumatic equipment running across the North West and Merseyside — mobile hose replacement, pump &amp; valve overhaul and more, on site, fast.</p>
+
+        <!-- QUOTE PANEL -->
+        <div class="qp-card" id="qpCard">
+          <div class="qp-card__head">
+            <h2 class="qp-card__title">Get a Fast <span>Quote</span></h2>
+            <p class="qp-card__sub">CALLOUT FOR <span id="qpSelectedLabel">MOBILE HOSE REPLACEMENT</span></p>
           </div>
-          <div class="rh-hero__stat">
-            <div class="rh-hero__stat-num">8</div>
-            <div class="rh-hero__stat-label">Core Services</div>
+
+          <div class="qp-chips" id="qpChips">
+            <button type="button" class="qp-chip is-active" data-label="Mobile Hose Replacement">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s7 7.58 7 12a7 7 0 11-14 0c0-4.42 7-12 7-12z"/></svg>
+              <span>Mobile Hose</span>
+            </button>
+            <button type="button" class="qp-chip" data-label="Pump &amp; Actuator Overhaul">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/></svg>
+              <span>Pump Overhaul</span>
+            </button>
+            <button type="button" class="qp-chip" data-label="Valve Overhaul &amp; Replacement">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94z"/></svg>
+              <span>Valve Service</span>
+            </button>
+            <button type="button" class="qp-chip" data-label="Pneumatic Components">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.6 4.6A2 2 0 1111 8H2"/><path d="M12.6 11.6A2 2 0 1114 15H2"/><path d="M17.6 6.6A2 2 0 1119 10H2"/></svg>
+              <span>Pneumatics</span>
+            </button>
           </div>
-          <div class="rh-hero__stat">
-            <div class="rh-hero__stat-num">2&quot;</div>
-            <div class="rh-hero__stat-label">Mobile Hose Capacity</div>
+
+          <form id="qpForm" onsubmit="handleQuoteSubmit(event)">
+            <input type="hidden" id="qpService" name="service" value="Mobile Hose Replacement" />
+            <div class="qp-row">
+              <input type="text" placeholder="Your name" required />
+              <input type="tel" placeholder="Phone number" required />
+            </div>
+            <textarea placeholder="Briefly describe your equipment, location and how urgent it is..." required></textarea>
+            <button type="submit" class="qp-submit">Send Quote Request <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+            <p class="qp-note">No obligation — we'll call you back fast during working hours.</p>
+          </form>
+
+          <div class="qp-success" id="qpSuccess">
+            Thanks — we've got your request and will call you back shortly.
           </div>
         </div>
       </div>
@@ -366,6 +390,21 @@
     function closeMobileNav() {
       document.getElementById('mobileNav').classList.remove('is-open');
       document.body.style.overflow = '';
+    }
+    document.querySelectorAll('#qpChips .qp-chip').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        document.querySelectorAll('#qpChips .qp-chip').forEach(function (c) { c.classList.remove('is-active'); });
+        chip.classList.add('is-active');
+        var label = chip.getAttribute('data-label');
+        document.getElementById('qpService').value = label;
+        document.getElementById('qpSelectedLabel').textContent = label.toUpperCase();
+      });
+    });
+    function handleQuoteSubmit(e) {
+      e.preventDefault();
+      document.getElementById('qpForm').style.display = 'none';
+      document.getElementById('qpChips').style.display = 'none';
+      document.getElementById('qpSuccess').style.display = 'block';
     }
   </script>
 </body>
