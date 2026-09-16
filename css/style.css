@@ -22,6 +22,8 @@
   --border-s: rgba(0,0,0,0.05);
   --primary:      #c8202b;
   --primary-dark: #8f1620;
+  --accent:       #fbdc2b;
+  --accent-dark:  #d4b400;
 }
 
 html { scroll-behavior: smooth; }
@@ -111,6 +113,13 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   top: 0;
   z-index: 100;
   width: 100%;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent) 50%, var(--primary));
 }
 .header__inner {
   max-width: 1280px;
@@ -960,7 +969,7 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  background: linear-gradient(90deg, transparent, var(--primary), var(--accent), var(--primary), transparent);
 }
 
 .footer__inner {
@@ -1430,10 +1439,10 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 .ci-item__val a { color: var(--grey-6); text-decoration: none; transition: color 0.2s; }
 .ci-item__val a:hover { color: var(--primary); }
 
-.emergency-box { background: var(--primary); padding: 28px 32px; margin-top: 2px; }
-.emergency-box__label { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 8px; }
-.emergency-box__text { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 14px; }
-.emergency-box__num { font-size: 24px; font-weight: 800; color: #ffffff; }
+.emergency-box { background: var(--accent); padding: 28px 32px; margin-top: 2px; }
+.emergency-box__label { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(10,10,10,0.55); margin-bottom: 8px; }
+.emergency-box__text { font-size: 15px; color: rgba(10,10,10,0.72); line-height: 1.6; margin-bottom: 14px; }
+.emergency-box__num { font-size: 24px; font-weight: 800; color: #0a0a0a; }
 
 /* ======================================
    MOBILE NAV DRAWER
@@ -1768,7 +1777,7 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 }
 .rh-hero__stat { padding: 22px 16px 0 0; border-right: 1px solid rgba(255,255,255,0.14); }
 .rh-hero__stat:last-child { border-right: none; }
-.rh-hero__stat-num { font-size: 28px; font-weight: 800; color: var(--primary); letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; }
+.rh-hero__stat-num { font-size: 28px; font-weight: 800; color: var(--accent); letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; }
 .rh-hero__stat-label { font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
 
 .rh-hero__panel {
@@ -1815,7 +1824,7 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   display: block;
   font-size: 11px; font-weight: 700;
   letter-spacing: 0.18em; text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+  color: var(--accent);
   margin-bottom: 16px;
   text-align: left;
 }
