@@ -1727,6 +1727,21 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 }
 .rh-hero__inner {
   position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+}
+.rh-hero__image-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rh-hero__image {
+  width: 100%;
+  max-width: 620px;
+  height: auto;
+  filter: drop-shadow(0 30px 40px rgba(10,10,10,0.35));
 }
 .rh-hero__eyebrow {
   font-size: 13px; font-weight: 700;
@@ -1763,6 +1778,9 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 
 @media (max-width: 1024px) {
   .rh-hero { padding: 156px 0 72px; }
+  .rh-hero__inner { grid-template-columns: 1fr; gap: 40px; }
+  .rh-hero__image-wrap { order: -1; }
+  .rh-hero__image { max-width: 420px; }
 }
 
 /* ── Simplified footer (no street address known) ── */
