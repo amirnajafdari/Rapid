@@ -945,6 +945,13 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   overflow: hidden;
   padding: 56px 24px 40px;
 }
+.product-carousel::after {
+  content: '';
+  position: absolute; inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--primary) 0%, transparent 12%, transparent 88%, var(--primary) 100%);
+}
 .product-carousel__track {
   position: relative;
   display: flex;
