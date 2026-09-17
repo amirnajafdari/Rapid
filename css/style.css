@@ -198,8 +198,8 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   color: var(--accent);
   text-decoration: none;
   border: 2px solid var(--primary);
-  padding: 9px 18px;
-  border-radius: 8px;
+  padding: 9px 22px;
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
   transition: background 0.2s, color 0.2s;
 }
 .header__phone:hover {
@@ -211,8 +211,8 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   font-weight: 700;
   color: var(--primary-ink);
   background: var(--primary);
-  padding: 9px 20px;
-  border-radius: 8px;
+  padding: 9px 24px;
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
   text-decoration: none;
   transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
   white-space: nowrap;
