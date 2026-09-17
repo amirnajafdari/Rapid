@@ -192,63 +192,38 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   gap: 10px;
   flex-shrink: 0;
 }
-.header__phone {
-  position: relative;
-  font-size: 15.5px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  color: var(--primary-ink);
-  background: var(--primary);
-  padding: 10px 26px;
-  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
-  text-decoration: none;
-  overflow: hidden;
-  transition: color 0.25s;
-  white-space: nowrap;
-}
-.header__phone::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--accent);
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-  z-index: 0;
-}
-.header__phone:hover { color: #ffffff; }
-.header__phone:hover::before { transform: translateX(0); }
-.header__phone span { position: relative; z-index: 1; }
+.header__phone,
 .header__cta {
   position: relative;
   font-size: 15.5px;
   font-weight: 800;
   letter-spacing: 0.02em;
-  color: var(--primary-ink);
-  background: var(--primary);
   padding: 10px 26px;
   clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
   text-decoration: none;
-  overflow: hidden;
-  transition: color 0.25s;
   white-space: nowrap;
+  filter: drop-shadow(4px 4px 0 var(--black));
+  transition: transform 0.15s ease, background 0.2s, filter 0.15s ease;
 }
-.header__cta::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--accent);
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-  z-index: 0;
-}
-.header__cta:hover { color: #ffffff; }
-.header__cta:hover::before { transform: translateX(0); }
-.header__cta span { position: relative; z-index: 1; }
+.header__phone:hover,
 .header__cta:hover {
-  background: var(--primary-dark);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(212,180,0,0.35);
+  transform: translate(2px, 2px);
+  filter: drop-shadow(2px 2px 0 var(--black));
 }
+.header__phone span,
+.header__cta span { position: relative; z-index: 1; }
+
+.header__phone {
+  color: var(--primary-ink);
+  background: var(--primary);
+}
+.header__phone:hover { background: var(--primary-dark); }
+
+.header__cta {
+  color: #ffffff;
+  background: var(--accent);
+}
+.header__cta:hover { background: var(--accent-dark); }
 
 .header__burger {
   display: none;
