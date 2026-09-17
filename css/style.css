@@ -899,10 +899,11 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
    ====================================== */
 
 .about-section {
-  background: var(--white);
+  background: var(--black);
   padding: 112px 0;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
+.about-section .eyebrow { color: rgba(255,255,255,0.45); }
 .about-section__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -910,21 +911,30 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 }
 .about-section__title {
   font-size: clamp(32px, 3.5vw, 50px);
-  font-weight: 800; color: var(--black);
+  font-weight: 800; color: #ffffff;
   margin-bottom: 32px; line-height: 1.1;
 }
 .about-section__body {
-  font-size: 17px; color: var(--grey-5);
+  font-size: 17px; color: rgba(255,255,255,0.62);
   line-height: 1.85; margin-bottom: 20px;
 }
 .about-section__cta { margin-top: 36px; }
+.about-section .btn--ghost {
+  color: #ffffff;
+  border-color: rgba(255,255,255,0.25);
+}
+.about-section .btn--ghost:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(251,220,43,0.1);
+}
 .about-stats {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 2px; background: var(--border);
-  border: 1px solid var(--border);
+  gap: 2px; background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 .about-stat {
-  background: var(--white);
+  background: var(--black);
   padding: 32px 28px;
 }
 .about-stat__num {
@@ -935,7 +945,7 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 .about-stat__label {
   font-size: 12px; font-weight: 600;
   letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--grey-4);
+  color: rgba(255,255,255,0.45);
 }
 .product-carousel {
   width: 100%;
