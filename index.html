@@ -170,7 +170,7 @@
 
   <!-- PRODUCT CAROUSEL -->
   <section class="product-carousel">
-    <div class="product-carousel__track" id="productCarousel">
+    <div class="product-carousel__track" id="productCarousel" data-set>
       <button type="button" class="product-carousel__item" data-name="Hydraulic Oil AW 46" data-size="20L" data-price="POA">
         <img src="images/panel-fluid-jerrycan.png" alt="Hydraulic Oil AW 46, 20 Litres" />
       </button>
@@ -178,15 +178,6 @@
         <img src="images/product-tfr-200.png" alt="TFR 200:1 Traffic Film Remover, 25 Litres" />
       </button>
       <button type="button" class="product-carousel__item is-active" data-name="Morris Lubricants" data-size="Hydraulic Oil" data-price="POA">
-        <img src="images/panel-fluid-drum.png" alt="Morris Lubricants Hydraulic Oil Drum" />
-      </button>
-      <button type="button" class="product-carousel__item" data-name="Hydraulic Oil AW 46" data-size="20L" data-price="POA">
-        <img src="images/panel-fluid-jerrycan.png" alt="Hydraulic Oil AW 46, 20 Litres" />
-      </button>
-      <button type="button" class="product-carousel__item" data-name="TFR 200:1" data-size="25L" data-price="POA">
-        <img src="images/product-tfr-200.png" alt="TFR 200:1 Traffic Film Remover, 25 Litres" />
-      </button>
-      <button type="button" class="product-carousel__item" data-name="Morris Lubricants" data-size="Hydraulic Oil" data-price="POA">
         <img src="images/panel-fluid-drum.png" alt="Morris Lubricants Hydraulic Oil Drum" />
       </button>
     </div>
@@ -330,8 +321,19 @@
     (function () {
       var wrap = document.querySelector('.product-carousel');
       var track = document.getElementById('productCarousel');
+      var uniqueItems = Array.prototype.slice.call(track.children);
+      var uniqueCount = uniqueItems.length;
+
+      // Clone the unique set enough times to fill well beyond the
+      // widest screen, so there's never empty space on the right
+      // while the track steps and loops.
+      while (track.scrollWidth < window.innerWidth * 3) {
+        uniqueItems.forEach(function (item) {
+          track.appendChild(item.cloneNode(true));
+        });
+      }
+
       var items = Array.prototype.slice.call(document.querySelectorAll('#productCarousel .product-carousel__item'));
-      var uniqueCount = items.length / 2;
       var current = null;
       var step = 0;
       var SLIDE_MS = 500;
