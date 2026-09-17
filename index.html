@@ -324,12 +324,11 @@
       var wrap = document.querySelector('.product-carousel');
       var track = document.getElementById('productCarousel');
       var uniqueItems = Array.prototype.slice.call(track.children);
-      var uniqueCount = uniqueItems.length;
 
       // Clone the unique set enough times to fill well beyond the
-      // widest screen, so there's never empty space on the right
-      // while the track steps and loops.
-      while (track.scrollWidth < window.innerWidth * 3) {
+      // widest screen, so there's never empty space while it steps
+      // and loops.
+      while (track.scrollWidth < window.innerWidth * 4) {
         uniqueItems.forEach(function (item) {
           track.appendChild(item.cloneNode(true));
         });
@@ -337,25 +336,35 @@
 
       var items = Array.prototype.slice.call(document.querySelectorAll('#productCarousel .product-carousel__item'));
       var current = null;
-      var step = 0;
       var SLIDE_MS = 500;
       var PAUSE_MS = 1000;
 
-      function stepSize() {
-        var a = items[0].getBoundingClientRect();
-        var b = items[1].getBoundingClientRect();
-        return b.left - a.left;
+      // offsetLeft/offsetWidth are pure layout values, unaffected by
+      // the transform we animate the track with — using them (rather
+      // than a fixed per-step distance) means every item is centered
+      // exactly, however wide its particular product photo is, with
+      // no drift building up over many steps.
+      function centerOffsetOf(item) {
+        return item.offsetLeft + item.offsetWidth / 2;
       }
 
+      function applyTransform(idx, animate) {
+        var targetX = wrap.clientWidth / 2 - centerOffsetOf(items[idx]);
+        track.style.transition = animate ? 'transform ' + SLIDE_MS + 'ms ease' : 'none';
+        track.style.transform = 'translateX(' + targetX + 'px)';
+      }
+
+      var index = items.findIndex(function (c) { return c.classList.contains('is-active'); });
+      if (index === -1) index = 0;
+      applyTransform(index, false);
+
       function advance() {
-        step++;
-        track.style.transition = 'transform ' + SLIDE_MS + 'ms ease';
-        track.style.transform = 'translateX(-' + (step * stepSize()) + 'px)';
-        if (step >= uniqueCount) {
+        index++;
+        applyTransform(index, true);
+        if (index >= items.length - uniqueItems.length) {
           setTimeout(function () {
-            track.style.transition = 'none';
-            step = 0;
-            track.style.transform = 'translateX(0px)';
+            index -= uniqueItems.length;
+            applyTransform(index, false);
           }, SLIDE_MS);
         }
       }
@@ -385,8 +394,11 @@
         requestAnimationFrame(updateFromCenter);
       }
 
-      items.forEach(function (item) {
-        item.addEventListener('click', function () { setActive(item); });
+      items.forEach(function (item, i) {
+        item.addEventListener('click', function () {
+          index = i;
+          applyTransform(index, true);
+        });
       });
 
       requestAnimationFrame(updateFromCenter);
