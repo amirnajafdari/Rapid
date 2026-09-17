@@ -1718,11 +1718,11 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 
 .rh-hero {
   background: var(--primary);
-  padding: 120px 0 40px;
+  padding: 140px 0 60px;
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid rgba(10,10,10,0.1);
-  min-height: 780px;
+  min-height: 920px;
   display: flex;
   align-items: center;
 }
@@ -1736,13 +1736,11 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 38vw;
-  max-width: 560px;
+  width: 40vw;
+  max-width: 600px;
   min-width: 340px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 18px;
+  align-items: center;
   z-index: 0;
 }
 .rh-hero__image {
@@ -1751,7 +1749,7 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   max-width: none;
   filter: drop-shadow(0 30px 40px rgba(10,10,10,0.35));
 }
-.rh-hero__caption { width: 100%; min-width: 0; }
+.rh-hero__caption { margin-bottom: 28px; }
 .rh-hero__eyebrow {
   font-size: 12px; font-weight: 700;
   letter-spacing: 0.18em; text-transform: uppercase;
@@ -1760,12 +1758,13 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   display: block;
 }
 .rh-hero__title {
-  font-size: clamp(26px, 2.6vw, 38px);
+  font-size: clamp(30px, 3vw, 44px);
   font-weight: 800; color: var(--primary-ink);
   letter-spacing: -0.03em; line-height: 1.1;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 .rh-hero__title span { color: var(--accent); }
+br.mobile-break { display: none; }
 .rh-hero__body {
   font-size: 15px; line-height: 1.6;
   color: rgba(10,10,10,0.72);
@@ -1906,11 +1905,12 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
     margin: 0 auto 32px;
   }
   .rh-hero__image { align-self: center; max-width: 100%; }
-  .rh-hero__caption { text-align: center; }
+  .rh-hero__caption { text-align: center; margin-bottom: 24px; }
+  .rh-hero__title { font-size: 30px; }
   .rh-hero__eyebrow,
-  .rh-hero__title,
   .rh-hero__body { max-width: 340px; margin-left: auto; margin-right: auto; }
   .rh-hero__content { max-width: 100%; }
+  br.mobile-break { display: inline; }
 }
 
 /* ── Simplified footer (no street address known) ── */
