@@ -695,12 +695,17 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 /* Panels 1 & 2 each have a diagonal cut on their right edge, so keep
    their image clear of the seam instead of bleeding off the edge
    (only panel 3's right edge is flush and safe to bleed into). */
-.feature-panel:nth-child(1) .feature-panel__image,
 .feature-panel:nth-child(2) .feature-panel__image {
   right: 30px;
   bottom: 20px;
   width: 46%;
   max-width: 340px;
+}
+.feature-panel:nth-child(1) .feature-panel__image {
+  right: 30px;
+  bottom: 20px;
+  width: 36%;
+  max-width: 260px;
 }
 .feature-panel--hoses:hover .feature-panel__image { transform: scale(1.04); }
 
