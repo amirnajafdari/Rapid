@@ -678,6 +678,22 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 }
 .feature-panel:hover .feature-panel__arrow { transform: translateX(8px); }
 
+.feature-panel--hoses { min-height: 480px; overflow: hidden; }
+.feature-panel--hoses .feature-panel__body { position: relative; z-index: 1; max-width: 60%; }
+.feature-panel__image {
+  position: absolute;
+  right: -30px;
+  bottom: -30px;
+  width: 58%;
+  max-width: 480px;
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+  filter: drop-shadow(0 20px 35px rgba(0,0,0,0.4));
+  transition: transform 0.35s;
+}
+.feature-panel--hoses:hover .feature-panel__image { transform: scale(1.04); }
+
 @media (max-width: 900px) {
   .feature-panels { flex-direction: column; --seam: 0px; }
   .feature-panel { min-height: 220px; padding: 40px !important; margin-left: 0 !important; clip-path: none !important; }
