@@ -1749,7 +1749,7 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   max-width: none;
   filter: drop-shadow(0 30px 40px rgba(10,10,10,0.35));
 }
-.rh-hero__caption { margin-bottom: 28px; }
+.rh-hero__caption { margin-bottom: 16px; }
 .rh-hero__eyebrow {
   font-size: 12px; font-weight: 700;
   letter-spacing: 0.18em; text-transform: uppercase;
@@ -1905,7 +1905,7 @@ br.mobile-break { display: none; }
     margin: 0 auto 32px;
   }
   .rh-hero__image { align-self: center; max-width: 100%; }
-  .rh-hero__caption { text-align: center; margin-bottom: 24px; }
+  .rh-hero__caption { text-align: center; margin-bottom: 16px; }
   .rh-hero__title { font-size: 30px; }
   .rh-hero__eyebrow,
   .rh-hero__body { max-width: 340px; margin-left: auto; margin-right: auto; }
