@@ -978,14 +978,20 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   position: relative;
   text-align: center;
   margin-top: 28px;
+}
+.product-carousel__caption-line {
   font-size: 18px; font-weight: 800;
   color: var(--black);
   letter-spacing: -0.01em;
 }
-.product-carousel__caption span { margin: 0 4px; }
+.product-carousel__caption-line span { margin: 0 4px; }
 #productCaptionSize { font-weight: 600; color: var(--grey-4); }
-#productCaptionPrice { color: var(--accent); }
-#productCaptionPrice::before { content: '\2013'; margin-right: 8px; color: var(--grey-3); }
+.product-carousel__caption-price {
+  margin-top: 6px;
+  font-size: 26px; font-weight: 900;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
 
 /* ======================================
    INDUSTRIES
@@ -1740,7 +1746,9 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   .product-carousel { padding: 32px 0 24px; }
   .product-carousel__track { gap: 32px; }
   .product-carousel__item img { height: 90px; max-width: 100px; }
-  .product-carousel__caption { font-size: 15px; padding: 0 16px; }
+  .product-carousel__caption { padding: 0 16px; }
+  .product-carousel__caption-line { font-size: 15px; }
+  .product-carousel__caption-price { font-size: 22px; }
 
   /* Process strip */
   .process-strip { position: static; top: auto; }
