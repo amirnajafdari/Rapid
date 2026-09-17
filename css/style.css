@@ -1718,19 +1718,23 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 
 .rh-hero {
   background: var(--primary);
-  padding: 100px 0 60px;
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid rgba(10,10,10,0.1);
-  min-height: 880px;
-  display: flex;
-  align-items: center;
+  min-height: max(640px, calc(100vh - 88px));
 }
 .rh-hero__inner {
-  position: relative; z-index: 1;
-  width: 100%;
+  position: absolute;
+  inset: 100px 0 60px;
+  z-index: 1;
 }
-.rh-hero__content { max-width: 620px; }
+.rh-hero__content {
+  position: relative;
+  height: 100%;
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+}
 .rh-hero__image-wrap {
   position: absolute;
   right: 0;
@@ -1749,7 +1753,8 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   max-width: none;
   filter: drop-shadow(0 30px 40px rgba(10,10,10,0.35));
 }
-.rh-hero__caption { margin-bottom: 16px; }
+.rh-hero__caption { flex: 0 0 auto; }
+.rh-hero__panel-slot { flex: 1 1 auto; display: flex; align-items: center; min-height: 0; }
 .rh-hero__eyebrow {
   font-size: 12px; font-weight: 700;
   letter-spacing: 0.18em; text-transform: uppercase;
@@ -1777,6 +1782,7 @@ br.mobile-break { display: none; }
   border-radius: 20px;
   padding: 34px 36px;
   max-width: 560px;
+  width: 100%;
   box-shadow: 0 30px 60px rgba(10,10,10,0.28), 0 0 0 1px rgba(10,10,10,0.04);
   overflow: hidden;
 }
@@ -1894,7 +1900,8 @@ br.mobile-break { display: none; }
 .rh-hero__stat-label { font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(10,10,10,0.6); }
 
 @media (max-width: 1024px) {
-  .rh-hero { padding: 140px 0 48px; min-height: 0; display: block; }
+  .rh-hero { padding: 140px 0 48px; min-height: 0; }
+  .rh-hero__inner { position: static; inset: auto; }
   .rh-hero__image-wrap {
     position: static;
     transform: none;
@@ -1905,11 +1912,13 @@ br.mobile-break { display: none; }
     margin: 0 auto 32px;
   }
   .rh-hero__image { align-self: center; max-width: 100%; }
+  .rh-hero__content { display: block; height: auto; max-width: 100%; }
   .rh-hero__caption { text-align: center; margin-bottom: 16px; }
   .rh-hero__title { font-size: 30px; }
   .rh-hero__eyebrow,
   .rh-hero__body { max-width: 340px; margin-left: auto; margin-right: auto; }
-  .rh-hero__content { max-width: 100%; }
+  .rh-hero__panel-slot { display: block; }
+  .qp-card { max-width: 460px; margin: 0 auto; }
   br.mobile-break { display: inline; }
 }
 
