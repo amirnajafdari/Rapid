@@ -939,20 +939,11 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 }
 .product-carousel {
   width: 100%;
-  background:
-    linear-gradient(155deg, #eef2fb 0%, #f8fafc 55%, #ffffff 100%);
-  border-bottom: 1px solid var(--border);
+  background: var(--primary);
+  border-bottom: 1px solid rgba(10,10,10,0.1);
   position: relative;
   overflow: hidden;
   padding: 56px 24px 40px;
-}
-.product-carousel::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(10,20,60,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(10,20,60,0.05) 1px, transparent 1px);
-  background-size: 32px 32px;
 }
 .product-carousel__track {
   position: relative;
