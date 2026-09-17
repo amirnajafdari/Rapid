@@ -329,8 +329,34 @@
     }
     (function () {
       var wrap = document.querySelector('.product-carousel');
+      var track = document.getElementById('productCarousel');
       var items = Array.prototype.slice.call(document.querySelectorAll('#productCarousel .product-carousel__item'));
+      var uniqueCount = items.length / 2;
       var current = null;
+      var step = 0;
+      var SLIDE_MS = 500;
+      var PAUSE_MS = 1000;
+
+      function stepSize() {
+        var a = items[0].getBoundingClientRect();
+        var b = items[1].getBoundingClientRect();
+        return b.left - a.left;
+      }
+
+      function advance() {
+        step++;
+        track.style.transition = 'transform ' + SLIDE_MS + 'ms ease';
+        track.style.transform = 'translateX(-' + (step * stepSize()) + 'px)';
+        if (step >= uniqueCount) {
+          setTimeout(function () {
+            track.style.transition = 'none';
+            step = 0;
+            track.style.transform = 'translateX(0px)';
+          }, SLIDE_MS);
+        }
+      }
+
+      setInterval(advance, SLIDE_MS + PAUSE_MS);
 
       function setActive(item) {
         if (item === current) return;
