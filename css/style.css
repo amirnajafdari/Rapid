@@ -952,6 +952,22 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   letter-spacing: 0.12em; text-transform: uppercase;
   color: rgba(255,255,255,0.45);
 }
+.about-stats__image {
+  margin-top: 2px;
+  border: 1px solid rgba(255,255,255,0.1);
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+.about-stats__image img {
+  max-width: 100%;
+  max-height: 340px;
+  width: auto;
+  height: auto;
+  filter: drop-shadow(0 16px 24px rgba(0,0,0,0.5));
+}
 .product-carousel {
   width: 100%;
   background: var(--primary);
