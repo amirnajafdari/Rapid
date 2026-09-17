@@ -201,22 +201,23 @@
               <div class="about-stat__label">Scheduling</div>
             </div>
           </div>
-          <div class="product-strip">
-            <div class="product-strip__item">
-              <div class="product-strip__img"><img src="images/panel-fluid-jerrycan.png" alt="Hydraulic Oil AW 46, 20 Litres" /></div>
-              <div class="product-strip__name">Hydraulic Oil AW 46 <span>20L</span></div>
-              <div class="product-strip__price">POA</div>
+          <div class="product-carousel">
+            <div class="product-carousel__track" id="productCarousel">
+              <button type="button" class="product-carousel__item" data-name="Hydraulic Oil AW 46" data-size="20L" data-price="POA">
+                <img src="images/panel-fluid-jerrycan.png" alt="Hydraulic Oil AW 46, 20 Litres" />
+              </button>
+              <button type="button" class="product-carousel__item is-active" data-name="TFR 200:1" data-size="25L" data-price="POA">
+                <img src="images/product-tfr-200.png" alt="TFR 200:1 Traffic Film Remover, 25 Litres" />
+              </button>
+              <button type="button" class="product-carousel__item" data-name="Morris Lubricants" data-size="Hydraulic Oil" data-price="POA">
+                <img src="images/panel-fluid-drum.png" alt="Morris Lubricants Hydraulic Oil Drum" />
+              </button>
             </div>
-            <div class="product-strip__item">
-              <div class="product-strip__img"><img src="images/product-tfr-200.png" alt="TFR 200:1 Traffic Film Remover, 25 Litres" /></div>
-              <div class="product-strip__name">TFR 200:1 <span>25L</span></div>
-              <div class="product-strip__price">POA</div>
-            </div>
-            <div class="product-strip__item">
-              <div class="product-strip__img"><img src="images/panel-fluid-drum.png" alt="Morris Lubricants Hydraulic Oil Drum" /></div>
-              <div class="product-strip__name">Morris Lubricants <span>Hydraulic Oil</span></div>
-              <div class="product-strip__price">POA</div>
-            </div>
+            <p class="product-carousel__caption">
+              <span id="productCaptionName">TFR 200:1</span>
+              <span id="productCaptionSize">25L</span>
+              <span id="productCaptionPrice">POA</span>
+            </p>
           </div>
         </div>
       </div>
@@ -317,6 +318,15 @@
       document.getElementById('qpChips').style.display = 'none';
       document.getElementById('qpSuccess').style.display = 'block';
     }
+    document.querySelectorAll('#productCarousel .product-carousel__item').forEach(function (item) {
+      item.addEventListener('click', function () {
+        document.querySelectorAll('#productCarousel .product-carousel__item').forEach(function (c) { c.classList.remove('is-active'); });
+        item.classList.add('is-active');
+        document.getElementById('productCaptionName').textContent = item.getAttribute('data-name');
+        document.getElementById('productCaptionSize').textContent = item.getAttribute('data-size');
+        document.getElementById('productCaptionPrice').textContent = item.getAttribute('data-price');
+      });
+    });
   </script>
 </body>
 </html>
