@@ -678,14 +678,14 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 }
 .feature-panel:hover .feature-panel__arrow { transform: translateX(8px); }
 
-.feature-panel--hoses { min-height: 480px; overflow: hidden; }
+.feature-panel--hoses { min-height: 520px; overflow: hidden; align-items: flex-start; padding-top: 48px; }
 .feature-panel--hoses .feature-panel__body { position: relative; z-index: 1; max-width: 60%; }
 .feature-panel__image {
   position: absolute;
-  right: -30px;
-  bottom: -30px;
-  width: 58%;
-  max-width: 480px;
+  right: -20px;
+  bottom: 10px;
+  width: 68%;
+  max-width: 560px;
   height: auto;
   pointer-events: none;
   z-index: 0;
@@ -696,16 +696,16 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
    their image clear of the seam instead of bleeding off the edge
    (only panel 3's right edge is flush and safe to bleed into). */
 .feature-panel:nth-child(2) .feature-panel__image {
-  right: 30px;
-  bottom: 20px;
-  width: 46%;
-  max-width: 340px;
+  right: 20px;
+  bottom: 10px;
+  width: 56%;
+  max-width: 420px;
 }
 .feature-panel:nth-child(1) .feature-panel__image {
-  right: 30px;
-  bottom: 20px;
-  width: 36%;
-  max-width: 260px;
+  right: 20px;
+  bottom: 10px;
+  width: 46%;
+  max-width: 340px;
 }
 .feature-panel--hoses:hover .feature-panel__image { transform: scale(1.04); }
 
