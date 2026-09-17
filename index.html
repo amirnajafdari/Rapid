@@ -328,36 +328,38 @@
       document.getElementById('qpSuccess').style.display = 'block';
     }
     (function () {
+      var wrap = document.querySelector('.product-carousel');
       var items = Array.prototype.slice.call(document.querySelectorAll('#productCarousel .product-carousel__item'));
-      var activeIndex = items.findIndex(function (c) { return c.classList.contains('is-active'); });
-      if (activeIndex === -1) activeIndex = 0;
-      var timer;
+      var current = null;
 
-      function setActive(index) {
+      function setActive(item) {
+        if (item === current) return;
         items.forEach(function (c) { c.classList.remove('is-active'); });
-        var item = items[index];
         item.classList.add('is-active');
         document.getElementById('productCaptionName').textContent = item.getAttribute('data-name');
         document.getElementById('productCaptionSize').textContent = item.getAttribute('data-size');
         document.getElementById('productCaptionPrice').textContent = item.getAttribute('data-price');
-        activeIndex = index;
+        current = item;
       }
 
-      function startTimer() {
-        clearInterval(timer);
-        timer = setInterval(function () {
-          setActive((activeIndex - 1 + items.length) % items.length);
-        }, 2600);
-      }
-
-      items.forEach(function (item, index) {
-        item.addEventListener('click', function () {
-          setActive(index);
-          startTimer();
+      function updateFromCenter() {
+        var mid = wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width / 2;
+        var closest = items[0];
+        var closestDist = Infinity;
+        items.forEach(function (item) {
+          var r = item.getBoundingClientRect();
+          var dist = Math.abs((r.left + r.width / 2) - mid);
+          if (dist < closestDist) { closestDist = dist; closest = item; }
         });
+        setActive(closest);
+        requestAnimationFrame(updateFromCenter);
+      }
+
+      items.forEach(function (item) {
+        item.addEventListener('click', function () { setActive(item); });
       });
 
-      startTimer();
+      requestAnimationFrame(updateFromCenter);
     })();
   </script>
 </body>
