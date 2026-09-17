@@ -692,8 +692,10 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   filter: drop-shadow(0 20px 35px rgba(0,0,0,0.4));
   transition: transform 0.35s;
 }
-/* Panel 2 has diagonal cuts on both sides, so keep its image well
-   clear of the bottom-right seam instead of bleeding off the edge. */
+/* Panels 1 & 2 each have a diagonal cut on their right edge, so keep
+   their image clear of the seam instead of bleeding off the edge
+   (only panel 3's right edge is flush and safe to bleed into). */
+.feature-panel:nth-child(1) .feature-panel__image,
 .feature-panel:nth-child(2) .feature-panel__image {
   right: 30px;
   bottom: 20px;
