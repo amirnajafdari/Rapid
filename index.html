@@ -327,15 +327,38 @@
       document.getElementById('qpChips').style.display = 'none';
       document.getElementById('qpSuccess').style.display = 'block';
     }
-    document.querySelectorAll('#productCarousel .product-carousel__item').forEach(function (item) {
-      item.addEventListener('click', function () {
-        document.querySelectorAll('#productCarousel .product-carousel__item').forEach(function (c) { c.classList.remove('is-active'); });
+    (function () {
+      var items = Array.prototype.slice.call(document.querySelectorAll('#productCarousel .product-carousel__item'));
+      var activeIndex = items.findIndex(function (c) { return c.classList.contains('is-active'); });
+      if (activeIndex === -1) activeIndex = 0;
+      var timer;
+
+      function setActive(index) {
+        items.forEach(function (c) { c.classList.remove('is-active'); });
+        var item = items[index];
         item.classList.add('is-active');
         document.getElementById('productCaptionName').textContent = item.getAttribute('data-name');
         document.getElementById('productCaptionSize').textContent = item.getAttribute('data-size');
         document.getElementById('productCaptionPrice').textContent = item.getAttribute('data-price');
+        activeIndex = index;
+      }
+
+      function startTimer() {
+        clearInterval(timer);
+        timer = setInterval(function () {
+          setActive((activeIndex - 1 + items.length) % items.length);
+        }, 2600);
+      }
+
+      items.forEach(function (item, index) {
+        item.addEventListener('click', function () {
+          setActive(index);
+          startTimer();
+        });
       });
-    });
+
+      startTimer();
+    })();
   </script>
 </body>
 </html>

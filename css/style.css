@@ -953,17 +953,27 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
     linear-gradient(rgba(10,20,60,0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(10,20,60,0.05) 1px, transparent 1px);
   background-size: 32px 32px;
-  -webkit-mask-image: radial-gradient(ellipse 60% 100% at 50% 30%, black 30%, transparent 85%);
-  mask-image: radial-gradient(ellipse 60% 100% at 50% 30%, black 30%, transparent 85%);
+}
+.product-carousel::after {
+  content: '';
+  position: absolute; inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, #eef2fb 0%, transparent 10%, transparent 90%, #ffffff 100%);
 }
 .product-carousel__track {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 4px;
-  max-width: 1280px;
-  margin: 0 auto;
+  gap: 64px;
+  width: max-content;
+  animation: productMarquee 22s linear infinite;
+  will-change: transform;
+}
+.product-carousel:hover .product-carousel__track { animation-play-state: paused; }
+@keyframes productMarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 .product-carousel__item {
   flex: 0 0 auto;
@@ -971,25 +981,22 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   border: none;
   cursor: pointer;
   padding: 0;
-  opacity: 0.28;
-  filter: blur(0.5px) grayscale(0.3);
-  transform: scale(0.68);
-  transition: opacity 0.3s, filter 0.3s, transform 0.3s;
+  opacity: 0.45;
+  filter: grayscale(0.25);
+  transition: opacity 0.4s, filter 0.4s;
 }
 .product-carousel__item img {
-  height: 140px;
+  height: 150px;
   width: auto;
   max-width: 160px;
   object-fit: contain;
   filter: drop-shadow(0 10px 16px rgba(10,10,10,0.18));
 }
-.product-carousel__item:hover { opacity: 0.6; }
+.product-carousel__item:hover { opacity: 0.7; }
 .product-carousel__item.is-active {
   opacity: 1;
   filter: none;
-  transform: scale(1.15);
 }
-.product-carousel__item.is-active img { height: 190px; }
 .product-carousel__caption {
   position: relative;
   text-align: center;
@@ -1754,9 +1761,8 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 
   /* Product carousel */
   .product-carousel { padding: 32px 0 24px; }
-  .product-carousel__track { gap: 2px; overflow-x: auto; padding: 0 16px 8px; justify-content: flex-start; }
-  .product-carousel__item img { height: 80px; max-width: 90px; }
-  .product-carousel__item.is-active img { height: 110px; }
+  .product-carousel__track { gap: 32px; animation-duration: 16s; }
+  .product-carousel__item img { height: 90px; max-width: 100px; }
   .product-carousel__caption { font-size: 15px; padding: 0 16px; }
 
   /* Process strip */
