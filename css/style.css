@@ -702,10 +702,10 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   max-width: 420px;
 }
 .feature-panel:nth-child(1) .feature-panel__image {
-  right: 20px;
+  right: 90px;
   bottom: 10px;
-  width: 46%;
-  max-width: 340px;
+  width: 36%;
+  max-width: 260px;
 }
 .feature-panel--hoses:hover .feature-panel__image { transform: scale(1.04); }
 
