@@ -618,6 +618,70 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 .svc-card:hover .svc-card__arrow { transform: translateX(6px); color: var(--accent); }
 
 /* ======================================
+   FEATURE PANELS (full-bleed 3-up band)
+   ====================================== */
+
+.feature-panels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+}
+.feature-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 460px;
+  padding: 40px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: filter 0.25s;
+  overflow: hidden;
+}
+.feature-panel:hover { filter: brightness(1.05); }
+.feature-panel--red { background: var(--accent); color: #ffffff; }
+.feature-panel--yellow { background: var(--primary); color: var(--primary-ink); }
+.feature-panel__img-placeholder {
+  flex: 1;
+  min-height: 180px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+.feature-panel--red .feature-panel__img-placeholder { background: rgba(255,255,255,0.08); border: 1px dashed rgba(255,255,255,0.3); }
+.feature-panel--yellow .feature-panel__img-placeholder { background: rgba(10,10,10,0.05); border: 1px dashed rgba(10,10,10,0.25); }
+.feature-panel__img-label {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  opacity: 0.55;
+}
+.feature-panel__body { flex-shrink: 0; }
+.feature-panel__title {
+  font-size: 26px; font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+.feature-panel__desc {
+  font-size: 15px; line-height: 1.6;
+  opacity: 0.8;
+  margin-bottom: 18px;
+}
+.feature-panel__arrow {
+  font-size: 22px; font-weight: 700;
+  display: inline-block;
+  transition: transform 0.25s;
+}
+.feature-panel:hover .feature-panel__arrow { transform: translateX(8px); }
+
+@media (max-width: 900px) {
+  .feature-panels { grid-template-columns: 1fr; }
+  .feature-panel { min-height: 320px; padding: 32px; }
+}
+
+/* ======================================
    PROCESS STRIP
    ====================================== */
 
