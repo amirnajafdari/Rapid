@@ -1718,11 +1718,11 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 
 .rh-hero {
   background: var(--primary);
-  padding: 140px 0 60px;
+  padding: 100px 0 60px;
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid rgba(10,10,10,0.1);
-  min-height: 920px;
+  min-height: 880px;
   display: flex;
   align-items: center;
 }
