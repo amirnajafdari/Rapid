@@ -721,6 +721,11 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
     max-width: 220px;
     margin: 0 auto;
   }
+  .feature-panel:nth-child(1) .feature-panel__image {
+    width: 78%;
+    max-width: 290px;
+    margin: 0 auto 0 -12px;
+  }
 }
 
 /* ======================================
