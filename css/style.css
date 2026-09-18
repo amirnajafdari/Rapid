@@ -976,11 +976,31 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   height: auto;
   filter: drop-shadow(0 16px 24px rgba(0,0,0,0.5));
 }
+/* ── Section divider: diagonal speed-line bar echoing the logo ── */
+.section-divider {
+  position: relative;
+  height: 16px;
+  width: 100%;
+  overflow: hidden;
+  background: #0a0a0a;
+  z-index: 2;
+}
+.section-divider::before {
+  content: '';
+  position: absolute;
+  inset: -4px -20px;
+  background: repeating-linear-gradient(
+    -35deg,
+    var(--accent) 0px, var(--accent) 22px,
+    #ffffff 22px, #ffffff 40px,
+    var(--primary) 40px, var(--primary) 62px,
+    #ffffff 62px, #ffffff 80px
+  );
+}
+
 .product-carousel {
   width: 100%;
   background: var(--primary);
-  border-top: 6px solid #ffffff;
-  border-bottom: 6px solid #ffffff;
   position: relative;
   overflow: hidden;
   padding: 56px 24px 40px;
@@ -1942,7 +1962,6 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   background: var(--primary);
   position: relative;
   overflow: hidden;
-  border-bottom: 6px solid #ffffff;
   box-shadow: 0 12px 24px -8px rgba(0,0,0,0.35);
   min-height: max(640px, calc(100vh - 88px));
 }
