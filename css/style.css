@@ -1,5 +1,5 @@
 /* ======================================
-   RAPID HYDRAULICS LTD — Global Styles
+   A M D PAINTS & PARTS — Global Styles
    Clean White Industrial — Red
    (Design system cloned from Unicorn Engineering Ltd)
    ====================================== */
@@ -1931,7 +1931,7 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 }
 
 /* ======================================
-   RAPID HYDRAULICS — CUSTOM HERO
+   A M D PAINTS & PARTS — CUSTOM HERO
    (no client photography supplied — dark
    grid-pattern hero with a placeholder
    graphic panel, same visual language as
@@ -1961,16 +1961,16 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 .rh-hero__image-wrap {
   position: absolute;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 0;
   width: 52vw;
   max-width: 820px;
   min-width: 340px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   z-index: 0;
 }
 .rh-hero__image {
+  display: block;
   width: 100%;
   height: auto;
   max-width: none;
@@ -2062,7 +2062,9 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 .qp-chip.is-active svg { color: var(--accent); }
 
 .qp-row { display: flex; gap: 12px; margin-bottom: 12px; }
+.qp-row > * { flex: 0 0 calc(50% - 6px); min-width: 0; }
 .qp-row input,
+.qp-row select,
 .qp-card textarea {
   width: 100%;
   padding: 13px 16px;
@@ -2075,12 +2077,16 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   transition: border-color 0.2s, background 0.2s;
 }
 .qp-row input:focus,
+.qp-row select:focus,
 .qp-card textarea:focus {
   outline: none;
   border-color: var(--accent);
-  background: #ffffff;
+  background-color: #ffffff;
 }
 .qp-card textarea { min-height: 76px; resize: vertical; margin-bottom: 18px; }
+.qp-row select { appearance: none; cursor: pointer; padding-right: 40px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 16px; }
+.qp-row select:invalid,
+.qp-row input[type="date"]:invalid { color: var(--grey-4); }
 .qp-submit {
   width: 100%;
   display: flex; align-items: center; justify-content: center; gap: 8px;
