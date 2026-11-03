@@ -1,5 +1,5 @@
 /* ======================================
-   RAPID HYDRAULICS LTD — Global Styles
+   A M D PAINTS & PARTS — Global Styles
    Clean White Industrial — Red
    (Design system cloned from Unicorn Engineering Ltd)
    ====================================== */
@@ -717,6 +717,28 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 }
 .feature-panel--hoses:hover .feature-panel__image { transform: scale(1.04); }
 
+/* Photo panel: image fills the whole panel, red fade at the top keeps the text legible */
+.feature-panel--photo .feature-panel__image,
+.feature-panel--photo:nth-child(1) .feature-panel__image {
+  inset: 0;
+  right: 0; bottom: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 30% 50%;
+  filter: none;
+}
+.feature-panel--photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(200,32,43,0.95) 0%, rgba(200,32,43,0.75) 38%, rgba(200,32,43,0) 70%);
+}
+.feature-panel--photo .feature-panel__body { z-index: 2; }
+
 @media (max-width: 900px) {
   .feature-panels { flex-direction: column; --seam: 0px; }
   .feature-panel { flex: 1 1 auto; min-height: 220px; padding: 40px !important; margin-left: 0 !important; clip-path: none !important; }
@@ -734,6 +756,9 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
     max-width: 290px;
     margin: 0 auto 0 -12px;
   }
+  .feature-panel--photo { min-height: 340px; }
+  .feature-panel--photo .feature-panel__image,
+  .feature-panel--photo:nth-child(1) .feature-panel__image { position: absolute; width: 100%; max-width: none; margin: 0; }
 }
 
 /* ======================================
@@ -1026,6 +1051,7 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 }
 .product-carousel__caption-line span { margin: 0 4px; }
 #productCaptionSize { font-weight: 600; color: var(--grey-4); }
+.product-carousel__caption-price:empty { display: none; }
 .product-carousel__caption-price {
   margin-top: 6px;
   font-size: 26px; font-weight: 900;
@@ -1931,7 +1957,7 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 }
 
 /* ======================================
-   RAPID HYDRAULICS — CUSTOM HERO
+   A M D PAINTS & PARTS — CUSTOM HERO
    (no client photography supplied — dark
    grid-pattern hero with a placeholder
    graphic panel, same visual language as
@@ -1948,52 +1974,77 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 }
 .rh-hero__inner {
   position: absolute;
-  inset: 100px 0 60px;
+  inset: 100px 0 0;
   z-index: 1;
+  display: flex;
+  gap: 56px;
 }
 .rh-hero__content {
   position: relative;
   height: 100%;
+  flex: 0 1 620px;
   max-width: 620px;
+  padding-bottom: 60px;
   display: flex;
   flex-direction: column;
 }
-.rh-hero__image-wrap {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 52vw;
-  max-width: 820px;
-  min-width: 340px;
+/* Right column: text on top, image fills whatever height is left below it,
+   so the two never overlap whatever the screen ratio. */
+.rh-hero__side {
+  order: 2;
+  flex: 1 1 0;
+  min-width: 0;
   display: flex;
-  align-items: center;
-  z-index: 0;
+  flex-direction: column;
+}
+.rh-hero__intro {
+  flex: 0 0 auto;
+  max-width: 580px;
+  margin-bottom: 24px;
+}
+.rh-hero__rating {
+  margin-top: 22px;
+  font-size: 16px;
+  color: rgba(10,10,10,0.72);
+}
+.rh-hero__rating strong { color: var(--primary-ink); }
+.rh-hero__stars { color: var(--accent); letter-spacing: 2px; margin-right: 4px; }
+.rh-hero__image-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  /* bleed past the container padding to the right edge of the screen */
+  margin-right: calc((min(100vw, 1280px) - 100vw) / 2 - 48px);
 }
 .rh-hero__image {
-  width: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: block;
+  width: auto;
   height: auto;
-  max-width: none;
+  max-width: min(100%, 600px);
+  max-height: 100%;
   filter: drop-shadow(0 30px 40px rgba(10,10,10,0.35));
 }
 .rh-hero__caption { flex: 0 0 auto; }
 .rh-hero__panel-slot { flex: 1 1 auto; display: flex; align-items: center; min-height: 0; }
 .rh-hero__eyebrow {
-  font-size: 12px; font-weight: 700;
+  font-size: 14px; font-weight: 700;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   display: block;
 }
 .rh-hero__title {
-  font-size: clamp(30px, 3vw, 44px);
+  font-size: clamp(38px, 3.8vw, 56px);
   font-weight: 800; color: var(--primary-ink);
-  letter-spacing: -0.03em; line-height: 1.1;
-  margin-bottom: 12px;
+  letter-spacing: -0.03em; line-height: 1.05;
+  margin-bottom: 18px;
 }
 .rh-hero__title span { color: var(--accent); }
 .rh-hero__body {
-  font-size: 15px; line-height: 1.6;
+  font-size: 18px; line-height: 1.6;
   color: rgba(10,10,10,0.72);
 }
 
@@ -2062,7 +2113,9 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 .qp-chip.is-active svg { color: var(--accent); }
 
 .qp-row { display: flex; gap: 12px; margin-bottom: 12px; }
+.qp-row > * { flex: 0 0 calc(50% - 6px); min-width: 0; }
 .qp-row input,
+.qp-row select,
 .qp-card textarea {
   width: 100%;
   padding: 13px 16px;
@@ -2075,12 +2128,16 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
   transition: border-color 0.2s, background 0.2s;
 }
 .qp-row input:focus,
+.qp-row select:focus,
 .qp-card textarea:focus {
   outline: none;
   border-color: var(--accent);
-  background: #ffffff;
+  background-color: #ffffff;
 }
 .qp-card textarea { min-height: 76px; resize: vertical; margin-bottom: 18px; }
+.qp-row select { appearance: none; cursor: pointer; padding-right: 40px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 16px; }
+.qp-row select:invalid,
+.qp-row input[type="date"]:invalid { color: var(--grey-4); }
 .qp-submit {
   width: 100%;
   display: flex; align-items: center; justify-content: center; gap: 8px;
@@ -2125,19 +2182,19 @@ h1, h2, h3, h4 { line-height: 1.08; letter-spacing: -0.025em; }
 @media (max-width: 1024px) {
   .rh-hero { padding: 140px 0 48px; min-height: 0; }
   .rh-hero__inner { position: static; inset: auto; }
+  .rh-hero__side { display: flex; flex-direction: column; }
   .rh-hero__image-wrap {
-    position: static;
-    transform: none;
-    width: calc(100% - 48px);
+    order: -1;
+    width: 100%;
     max-width: 460px;
-    min-width: 0;
-    align-items: stretch;
     margin: 0 auto 32px;
   }
-  .rh-hero__image { align-self: center; max-width: 100%; }
-  .rh-hero__content { display: block; height: auto; max-width: 100%; }
+  .rh-hero__image { position: static; width: 100%; max-width: 100%; max-height: none; }
+  .rh-hero__inner { display: block; }
+  .rh-hero__intro { max-width: 460px; margin: 0 auto 28px; padding-top: 0; text-align: center; }
+  .rh-hero__content { display: block; height: auto; max-width: 100%; padding-bottom: 0; }
   .rh-hero__caption { text-align: center; margin-bottom: 16px; }
-  .rh-hero__title { font-size: 30px; }
+  .rh-hero__title { font-size: 36px; }
   .rh-hero__eyebrow,
   .rh-hero__body { max-width: 340px; margin-left: auto; margin-right: auto; }
   .rh-hero__panel-slot { display: block; }

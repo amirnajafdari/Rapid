@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 111" role="img" aria-label="A.M.D">
+  <!-- speed lines -->
+  <g fill="#c8202b">
+    <rect x="0"  y="14" width="96" height="9" />
+    <rect x="12" y="34" width="80" height="9" />
+    <rect x="24" y="54" width="64" height="9" />
+    <rect x="36" y="74" width="48" height="9" />
+  </g>
+  <g font-family="'Arial Black', 'Arial Bold', Arial, Helvetica, sans-serif" font-weight="900" font-size="104"
+     transform="skewX(-14)" text-anchor="start">
+    <!-- outer red outline -->
+    <text x="118" y="98" textLength="300" lengthAdjust="spacingAndGlyphs"
+          fill="#c8202b" stroke="#c8202b" stroke-width="14" stroke-linejoin="round">A.M.D</text>
+    <!-- white inner outline -->
+    <text x="118" y="98" textLength="300" lengthAdjust="spacingAndGlyphs"
+          fill="#c8202b" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">A.M.D</text>
+    <!-- red fill -->
+    <text x="118" y="98" textLength="300" lengthAdjust="spacingAndGlyphs"
+          fill="#c8202b">A.M.D</text>
+  </g>
+</svg>
